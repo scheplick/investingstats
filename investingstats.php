@@ -1,27 +1,34 @@
 <?php
 /*
 Plugin Name: InvestingStats
-Description: Creates a page at /investingstats and displays Hello World.
-Version: 1.0
+Description: Forces /investingstats to be a blank white page with just "Hello World!"
+Version: 1.1
 Author: Your Name
 */
 
-function investingstats_create_page() {
-    $page_title = 'InvestingStats';
-    $page_slug  = 'investingstats'; 
-    $page_content = 'Hello World from GitHub!';
-
-    $existing_page = get_page_by_path($page_slug);
-
-    if (!$existing_page) {
-        $page_data = array(
-            'post_title'    => $page_title,
-            'post_name'     => $page_slug,
-            'post_content'  => $page_content,
-            'post_status'   => 'publish',
-            'post_type'     => 'page'
-        );
-        wp_insert_post($page_data);
+function investingstats_force_blank_page() {
+    if (is_page('investingstats')) {
+        // Output a completely blank page with just "Hello World!"
+        echo '<!DOCTYPE html>
+        <html>
+        <head>
+            <title>InvestingStats</title>
+            <style>
+                body {
+                    background-color: white;
+                    color: black;
+                    font-size: 24px;
+                    text-align: center;
+                    margin-top: 20%;
+                }
+            </style>
+        </head>
+        <body>
+            Hello World!
+        </body>
+        </html>';
+        
+        exit; // Stop WordPress from loading anything else
     }
 }
-register_activation_hook(__FILE__, 'investingstats_create_page');
+add_action('template_redirect', 'investingstats_force_blank_page');
