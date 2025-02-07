@@ -2,7 +2,7 @@
 /*
 Plugin Name: InvestingStats
 Description: A sleek, minimalistic page with flickering title and smoothly transitioning stats.
-Version: 1.6
+Version: 1.7
 Author: Your Name
 */
 
@@ -42,20 +42,12 @@ function investingstats_minimal_page() {
                     display: flex;
                     align-items: center;
                     justify-content: center;
-                    overflow: hidden;
                 }
                 .stat {
                     font-size: 24px;
-                    position: absolute;
                     opacity: 0;
-                    transform: translateX(100%);
-                    animation: swipeInOut 6s linear infinite;
-                }
-                @keyframes swipeInOut {
-                    0% { opacity: 0; transform: translateX(100%); }
-                    10% { opacity: 1; transform: translateX(0%); }
-                    90% { opacity: 1; transform: translateX(0%); }
-                    100% { opacity: 0; transform: translateX(-100%); }
+                    position: absolute;
+                    transition: opacity 1s ease-in-out;
                 }
             </style>
         </head>
@@ -75,9 +67,17 @@ function investingstats_minimal_page() {
             <script>
                 document.addEventListener("DOMContentLoaded", function() {
                     const stats = document.querySelectorAll(".stat");
-                    stats.forEach((stat, index) => {
-                        stat.style.animationDelay = `${index * 6}s`;
-                    });
+                    let currentIndex = 0;
+
+                    function showNextStat() {
+                        stats.forEach(stat => stat.style.opacity = "0"); // Hide all stats
+                        stats[currentIndex].style.opacity = "1"; // Show current stat
+
+                        currentIndex = (currentIndex + 1) % stats.length; // Move to next stat
+                    }
+
+                    showNextStat(); // Show first stat immediately
+                    setInterval(showNextStat, 5000); // Change stat every 5 seconds
                 });
             </script>
         </body>
