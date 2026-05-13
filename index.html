@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>InvestingStats — A Dashboard of Essential Investing Facts</title>
+<meta name="description" content="A curated dashboard of the most important investing statistics: long-run returns, dividends, drawdowns, concentration, and market psychology." />
+<style>
+  :root{--bg:#0a0f1c;--panel:#0f172a;--panel2:#111a2e;--border:#1f2a44;--text:#e6edf7;--muted:#94a3b8;--accent:#22d3ee;--green:#10b981;--red:#ef4444;--amber:#f59e0b;--violet:#8b5cf6;--blue:#3b82f6;}
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0;background:radial-gradient(1200px 600px at 10% -10%,#15224a 0%,transparent 60%),radial-gradient(900px 500px at 110% 10%,#0c2a3a 0%,transparent 55%),var(--bg);color:var(--text);font:15px/1.55 ui-sans-serif,system-ui,-apple-system,Segoe UI,Inter,Roboto,sans-serif}
+  .wrap{max-width:1180px;margin:0 auto;padding:28px 22px 80px}
+  .nav{display:flex;align-items:center;justify-content:space-between;padding:10px 0 24px;border-bottom:1px solid var(--border);margin-bottom:28px}
+  .brand{display:flex;align-items:center;gap:10px;font-weight:700}
+  .logo{width:30px;height:30px;border-radius:8px;background:linear-gradient(135deg,#22d3ee,#8b5cf6);box-shadow:0 6px 24px rgba(34,211,238,.35)}
+  .nav small{color:var(--muted);font-weight:500}
+  h1{font-size:40px;line-height:1.1;margin:8px 0 10px;letter-spacing:-.5px}
+  .lede{color:var(--muted);max-width:780px;margin:0 0 28px}
+  .kpis{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin-bottom:32px}
+  .kpi{background:linear-gradient(180deg,var(--panel),var(--panel2));border:1px solid var(--border);border-radius:14px;padding:18px}
+  .kpi .lbl{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.12em}
+  .kpi .val{font-size:28px;font-weight:800;margin-top:6px}
+  .kpi .sub{color:var(--muted);font-size:12px;margin-top:6px}
+  .kpi.green .val{color:var(--green)} .kpi.red .val{color:var(--red)} .kpi.amber .val{color:var(--amber)} .kpi.violet .val{color:var(--violet)}
+  .grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+  .card{background:linear-gradient(180deg,var(--panel),var(--panel2));border:1px solid var(--border);border-radius:14px;padding:18px;transition:transform .15s ease,border-color .15s ease}
+  .card:hover{transform:translateY(-2px);border-color:#2b3a5f}
+  .card h3{margin:0 0 6px;font-size:16px;display:flex;align-items:center;gap:8px}
+  .dot{width:8px;height:8px;border-radius:50%;display:inline-block}
+  .card p{margin:0;color:var(--muted)}
+  .section-title{margin:36px 0 14px;font-size:13px;letter-spacing:.18em;color:var(--muted);text-transform:uppercase}
+  footer{margin-top:50px;color:var(--muted);font-size:12px;border-top:1px solid var(--border);padding-top:18px}
+  @media (max-width:900px){.kpis{grid-template-columns:repeat(2,1fr)}.grid{grid-template-columns:1fr 1fr}}
+  @media (max-width:600px){.grid,.kpis{grid-template-columns:1fr}h1{font-size:30px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="nav">
+    <div class="brand"><span class="logo"></span> InvestingStats <small>· by scheplick</small></div>
+    <small>Updated May 2026</small>
+  </div>
+  <h1>The numbers that actually matter in investing.</h1>
+  <p class="lede">A curated dashboard of long-run market truths — the kind of facts that should anchor every portfolio decision. No noise, no hot takes, just the data.</p>
+  <div class="kpis">
+    <div class="kpi green"><div class="lbl">S&P 500 avg annual return</div><div class="val">~10%</div><div class="sub">Nominal, since 1928 (incl. dividends)</div></div>
+    <div class="kpi violet"><div class="lbl">Years in bull market</div><div class="val">79%</div><div class="sub">Of all years since 1928</div></div>
+    <div class="kpi red"><div class="lbl">Avg bear market drawdown</div><div class="val">-36%</div><div class="sub">Average peak-to-trough decline</div></div>
+    <div class="kpi amber"><div class="lbl">Dividends' share of total return</div><div class="val">~40%</div><div class="sub">Last 50 years of S&P 500 returns</div></div>
+  </div>
+  <div class="section-title">Long-run truths</div>
+  <div class="grid">
+    <div class="card"><h3><span class="dot" style="background:#10b981"></span>Time in market wins</h3><p>Since 1950, the S&P 500 has never had a negative total return over any 20-year holding period.</p></div>
+    <div class="card"><h3><span class="dot" style="background:#22d3ee"></span>Bull beats bear</h3><p>Average bull market: 6.6 years, +339% cumulative. Average bear: 1.3 years, -36%.</p></div>
+    <div class="card"><h3><span class="dot" style="background:#8b5cf6"></span>Rule of 72</h3><p>72 ÷ annual return ≈ years to double. At 10% you double in ~7.2 years.</p></div>
+  </div>
+  <div class="section-title">Drawdowns & recoveries</div>
+  <div class="grid">
+    <div class="card"><h3><span class="dot" style="background:#ef4444"></span>Intra-year pain is normal</h3><p>Since 1980 the S&P 500 has had an intra-year drop of 10%+ in most years — yet finished positive in roughly 75% of them.</p></div>
+    <div class="card"><h3><span class="dot" style="background:#f59e0b"></span>Recovery time</h3><p>Average time to recover from a crash: ~2.5 years. The 1929 crash took 25 years to fully recover.</p></div>
+    <div class="card"><h3><span class="dot" style="background:#3b82f6"></span>Shortest bear ever</h3><p>Feb-Mar 2020 (COVID): just 33 days from peak to trough.</p></div>
+  </div>
+  <div class="section-title">Concentration & winners</div>
+  <div class="grid">
+    <div class="card"><h3><span class="dot" style="background:#22d3ee"></span>4% do all the work</h3><p>Just ~4% of US stocks account for essentially 100% of net stock market wealth created since 1926.</p></div>
+    <div class="card"><h3><span class="dot" style="background:#8b5cf6"></span>Top-heavy index</h3><p>The top 10 names in the S&P 500 now represent roughly a third of the index by weight.</p></div>
+    <div class="card"><h3><span class="dot" style="background:#10b981"></span>Dividends compound</h3><p>Dividend payers have beaten non-payers by ~2% per year over the last 90 years.</p></div>
+  </div>
+  <div class="section-title">Behavior beats brilliance</div>
+  <div class="grid">
+    <div class="card"><h3><span class="dot" style="background:#ef4444"></span>Most traders lose</h3><p>~70% of active day traders lose money; only ~1% are consistently profitable over five years.</p></div>
+    <div class="card"><h3><span class="dot" style="background:#f59e0b"></span>Pros rarely beat the index</h3><p>Over 15 years, only ~15% of actively managed US funds beat their benchmark net of fees.</p></div>
+    <div class="card"><h3><span class="dot" style="background:#3b82f6"></span>Algos dominate flow</h3><p>Roughly 90% of US equity trading volume is now executed by algorithms.</p></div>
+  </div>
+  <footer>Data compiled from S&P Global, FRED, NYSE, Hartford Funds, and Bessembinder (2018). Educational use only — not investment advice.</footer>
+</div>
+</body>
+</html>
